@@ -23,7 +23,7 @@ public class Bizum extends PayMethod{
 
     }
 
-    public boolean validateBizum(String phoneNumber){
+    private boolean validateBizum(String phoneNumber){
 
         boolean status = true;
 
@@ -39,7 +39,6 @@ public class Bizum extends PayMethod{
 
         }catch (InputMismatchException error){
 
-            System.out.println("No has introducido el formato de número correcto...");
             return false;
 
         }
@@ -57,6 +56,22 @@ public class Bizum extends PayMethod{
     void paymentProcess(double totalImport) {
 
         System.out.println("Procesando pago de importe " + totalImport + "€ con Bizum");
+        System.out.println("Pago aceptado. Muchas gracias.");
+
+    }
+
+    boolean validatePayMethod() {
+
+        if (validateBizum(getPhoneNumber())){
+
+            return true;
+
+        }else{
+
+            System.out.println("Formato de Bizum incorrecto");
+            return false;
+
+        }
 
     }
 

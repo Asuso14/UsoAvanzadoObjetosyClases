@@ -3,6 +3,8 @@ package org.example.PagosECommerce;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.InputMismatchException;
+
 @Getter @Setter
 public class CreditCard extends PayMethod{
 
@@ -12,53 +14,44 @@ public class CreditCard extends PayMethod{
 
     public CreditCard(String type, String cardNumber){
 
-        assignType(type);
-        assignCardNum(cardNumber);
+        this.type = type;
+        this.cardNumber = cardNumber;
 
     }
 
-    private void assignCardNum(String cardNumber){
+    private boolean cardFormat(String cardNumber){
 
-        if (checkCardNumber(cardNumber)){
+        try {
 
-            this.cardNumber = cardNumber;
+            long temp = Long.parseLong((cardNumber));
 
-        }else {
+        }catch (InputMismatchException error){
 
-            System.out.println("El formato del número de la tarjeta no es válido...");
-            this.cardNumber = null;
+            return false;
 
         }
 
+        return true;
+
     }
 
-    private void assignType(String type){
-
-        boolean status = true;
+    private boolean checkType(String type){
 
         for (String i : POSSIBLE_TYPE){
 
             if (i.equalsIgnoreCase(type)){
 
-                this.type = type;
-                status = false;
-                break;
+                return true;
 
             }
 
         }
-
-        if (!status){
-
-            System.out.println("Tipo de Tarjeta no válido...");
-            this.type = null;
-
-        }
+        return false;
     }
 
-    public boolean checkCardNumber(String cardNumber){
+    private boolean checkCardNumber(String cardNumber){
 
-        return cardNumber.length() == 16;
+        return cardNumber.length() == 16 && cardFormat(cardNumber);
 
     }
 
@@ -66,6 +59,21 @@ public class CreditCard extends PayMethod{
     void paymentProcess(double totalImport) {
 
         System.out.println("Procesando pago de " + totalImport + "€ con tarjeta de crédito " + getType());
+        System.out.println("Pago aceptado. Muchas gracias.");
+
+    }
+
+    boolean validatePayMethod() {
+
+        if (checkCardNumber(getCardNumber()) && checkType(getType())){
+
+            return true;
+
+        }else {
+
+            System.out.println("Formato de la tarjeta erroneo.");
+            return false;
+        }
 
     }
 

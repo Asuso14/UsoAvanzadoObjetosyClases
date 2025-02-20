@@ -6,13 +6,13 @@ import lombok.Setter;
 @Getter @Setter
 public class PayPal extends PayMethod{
 
-    private final String MAIL_FORMAT = "^[^@\\s]+@[^@\\s]+\\.com$";
+    private final String MAIL_FORMAT = "^[^@/!#~+=\\s]+@[^@\\s]+\\.com$";
     private String account;
     private double balance;
 
     public PayPal(String account){
 
-        assignMail(account);
+        this.account = account;
         this.balance = 23;
 
     }
@@ -24,22 +24,7 @@ public class PayPal extends PayMethod{
 
     }
 
-    public void assignMail(String account){
-
-        if (checkMailFormat(account)){
-
-            this.account = account;
-
-        }else {
-
-            System.out.println("Formato del correo incorrecto...");
-            this.account = null;
-
-        }
-
-    }
-
-    public boolean checkMailFormat(String account){
+    private boolean checkMailFormat(String account){
 
         return account.matches(MAIL_FORMAT);
 
@@ -48,6 +33,29 @@ public class PayPal extends PayMethod{
     void paymentProcess(double totalImport) {
 
         System.out.println("Procesando pago de " + totalImport + "€ con PayPal.");
+        if (totalImport > getBalance()){
 
+            System.out.println("Saldo insuficiente, pago cancelado.");
+
+        }else {
+
+            System.out.println("Pago aceptado. Muchas gracias.");
+
+        }
+
+    }
+
+    boolean validatePayMethod() {
+
+        if (checkMailFormat(getAccount())){
+
+            return true;
+
+        }else {
+
+            System.out.println("Formato del PayPal incorrecto.");
+            return false;
+
+        }
     }
 }

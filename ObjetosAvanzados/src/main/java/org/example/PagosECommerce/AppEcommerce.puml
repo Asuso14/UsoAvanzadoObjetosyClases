@@ -1,0 +1,65 @@
+@startuml
+
+package "org.example.PagosECommerce" {
+    class AppEcommerce {
+        +main(String[] args)
+    }
+
+    abstract class PayMethod {
+        {abstract} +void paymentProcess(double totalImport)
+        {abstract} +boolean validatePayMethod()
+    }
+
+    class Bizum {
+        - Exception InputMismatchException
+        - static Scanner entry
+        - static Random random
+        - String phoneNumber
+        - int code
+        + Bizum(String phoneNumber)
+        - boolean validateBizum(String phoneNumber)
+        - boolean getUserCode(boolean status)
+        + void paymentProcess(double totalImport)
+        + boolean validatePayMethod()
+    }
+
+    class CreditCard {
+        - final String[] POSSIBLE_TYPE
+        - String type
+        - String cardNumber
+        + CreditCard(String type, String cardNumber)
+        - boolean cardFormat(String cardNumber)
+        - boolean checkType(String type)
+        - boolean checkCardNumber(String cardNumber)
+        + void paymentProcess(double totalImport)
+        + boolean validatePayMethod()
+    }
+
+    class PayPal {
+        - final String MAIL_FORMAT
+        - String account
+        - double balance
+        + PayPal(String account)
+        + PayPal(String account, double balance)
+        - boolean checkMailFormat(String account)
+        + void paymentProcess(double totalImport)
+        + boolean validatePayMethod()
+    }
+
+    class Tienda {
+        - static Scanner entry
+        + static void processPayment(PayMethod payMethod)
+        + static PayMethod UserChoose(String choose)
+        + static boolean validatePayMethod(PayMethod payMethod)
+        + static PayMethod PayPalMaker(int choose, String mail)
+        + static void startPayment()
+    }
+
+    PayMethod <|-- Bizum
+    PayMethod <|-- CreditCard
+    PayMethod <|-- PayPal
+    Tienda --> PayMethod
+    AppEcommerce --> Tienda
+}
+
+@enduml
