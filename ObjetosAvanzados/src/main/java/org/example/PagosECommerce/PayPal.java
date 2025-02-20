@@ -19,7 +19,7 @@ public class PayPal extends PayMethod{
 
     public PayPal(String account, double balance){
 
-        assignMail(account);
+        this.account = account;
         this.balance = balance;
 
     }

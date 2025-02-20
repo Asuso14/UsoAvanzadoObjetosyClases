@@ -1,5 +1,6 @@
 package org.example.PagosECommerce;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Tienda {
@@ -8,22 +9,32 @@ public class Tienda {
 
     static void processPayment( PayMethod payMethod , double totalImport){
 
-        payMethod.paymentProcess(totalImport);
+        if(){
 
+            System.out.println("Validando metodo de pago...");
+            payMethod.paymentProcess(totalImport);
+
+        }
     }
 
 
-    private boolean UserChoose( String choose){
+    public static PayMethod  UserChoose( String choose){
 
         switch (choose){
 
             case "Bizum" :
-                
-                break;
+
+                System.out.println("Introduce tu numero de telefono:");
+                String phoneNumber = entry.next();
+                return new Bizum(phoneNumber);
 
             case "PayPal" :
-
-                break;
+                System.out.println("Introduce tu correo de PayPal");
+                String mail = entry.next();
+                System.out.println("Tienes cargo en la cuenta?");
+                System.out.println("1. Si");
+                System.out.println("2. No");
+                return PayPalMaker(entry.nextInt(),mail);
 
             case "Tarjeta" :
 
@@ -32,16 +43,48 @@ public class Tienda {
             default:
 
                 System.out.println("Metodo de pago no aceptado.");
-                return false;
+                return null;
                 break;
         }
 
     }
 
+    public static boolean validatePayMethod(){
+
+
+
+    }
+
+    public static PayMethod PayPalMaker(int choose, String mail){
+
+        switch (choose){
+
+            case 1 :
+
+                System.out.println("Introduce saldo de la cuenta");
+                return new PayPal(mail,entry.nextInt());
+
+            case 2:
+
+                return new PayPal(mail);
+
+            default:
+
+                return null;
+        }
+
+    }
 
     public void startPayment(){
 
         System.out.println("Que metodo de pago quieres usar? [Bizum,Paypal,Tarjeta]: ");
+        PayMethod payMethod = UserChoose(entry.next());
+
+        if(){
+
+
+
+        }
 
 
     }
