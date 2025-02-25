@@ -1,5 +1,10 @@
 package org.example.Practica2;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
 public class Masseur extends MutxamelFC {
 
     private String degree;
@@ -11,11 +16,35 @@ public class Masseur extends MutxamelFC {
         this.experienceYears = experienceYears;
     }
 
-    public void focus() {}
+    public void focus() {
 
-    public void travel(String city) {}
 
-    public void celebrateGol() {}
+        System.out.println("El masajista " + getName() + " con el grado de " + getDegree() + " esta concentrado");
 
-    public void giveMassage( Player player ){}
+
+    }
+
+    public void travel(String city) {
+
+
+        System.out.println("El masajista " + getName() + " se va a ir de viaje a " + city);
+
+
+    }
+
+    public void celebrateGol() {
+
+
+        System.out.println("GOLAAASOOOO!!!");
+
+
+    }
+
+    public void giveMassage( Player player ){
+
+
+        System.out.println("El masajista " + getName() + " esta dandole un rico masaje al jugador " + player.getName() + " del equipo " + player.getCategory());
+
+
+    }
 }
