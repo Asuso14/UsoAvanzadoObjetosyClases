@@ -67,7 +67,7 @@ public class Player extends MutxamelFC implements DeportiveActions{
     public void warmUp(){
 
 
-        System.out.println("El jugador " + getName() + " con el dorsal " + getDorsal() + " esta calentando para entrar al partido.");
+        System.out.println("El jugador " + getName() + " con el dorsal " + getDorsal() + " esta calentando.");
 
 
     }
@@ -75,7 +75,7 @@ public class Player extends MutxamelFC implements DeportiveActions{
     public void rest(){
 
 
-        System.out.println(" El jugador " + getName() + " con el dorsal " + getDorsal() + " va a salir al banquillo a descansar.");
+        System.out.println(" El jugador " + getName() + " con el dorsal " + getDorsal() + " va a descansar.");
 
 
     }

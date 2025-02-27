@@ -70,7 +70,7 @@ public class Trainer extends MutxamelFC implements DeportiveActions{
     public void makeChanges(Player playerChanged , Player playerEntering){
 
 
-        System.out.println("El jugador " + playerChanged.getName() + " con el dorsal " + playerChanged.getDorsal() + " y entra...");
+        System.out.println("El jugador " + playerChanged.getName() + " con el dorsal " + playerChanged.getDorsal() + "sale al banquiyo y...");
         System.out.println("El jugador " + playerEntering.getName() + " con el dorsal " + playerEntering.getDorsal() + " entra al campoo!!");
 
 
