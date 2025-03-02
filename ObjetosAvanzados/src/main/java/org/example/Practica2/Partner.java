@@ -47,7 +47,7 @@ public class Partner extends MutxamelFC {
     public void encourageTeam(){
 
 
-        System.out.println("El compañero " + getName() + " grita: VAMOOOS EQUIIPOOO!");
+        System.out.println("El compañero " + getName() + " grita: VAMOOOS EQUIIPOOO " + member.getCategory() + " !");
 
 
     }

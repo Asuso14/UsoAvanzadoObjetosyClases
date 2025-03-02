@@ -3,6 +3,8 @@ package org.example.Practica2;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+
 @Getter
 @Setter
 public abstract class MutxamelFC implements IntegratesFunctions{

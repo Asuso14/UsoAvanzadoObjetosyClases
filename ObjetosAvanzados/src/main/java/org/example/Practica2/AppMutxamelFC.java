@@ -4,10 +4,10 @@ public class AppMutxamelFC {
 
     public static void main(String[] args) {
 
-        Player player1 = new Player("Nacho",21, Teams.SENIOR, Positions.DELATERO, 8);
-        Player player2 = new Player("Jose",25, Teams.SENIOR, Positions.DELATERO, 2);
-        Player player3 = new Player("Sergio",18, Teams.SENIOR, Positions.DELATERO, 10);
-        Player player4 = new Player("Pedro",20, Teams.SENIOR, Positions.DELATERO, 18);
+        Player player1 = new Player("Nacho",21, Teams.SENIOR, Positions.DELANTERO, 8);
+        Player player2 = new Player("Jose",25, Teams.SENIOR, Positions.DELANTERO, 2);
+        Player player3 = new Player("Sergio",18, Teams.SENIOR, Positions.DELANTERO, 10);
+        Player player4 = new Player("Pedro",20, Teams.SENIOR, Positions.DELANTERO, 18);
 
         Trainer trainer = new Trainer("Xokas",30, Teams.SENIOR, "1-1-2");
 

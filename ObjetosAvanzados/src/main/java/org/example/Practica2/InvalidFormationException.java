@@ -5,7 +5,7 @@ public class InvalidFormationException extends RuntimeException {
   public InvalidFormationException()
     {
 
-      System.out.println("Formato de formación incorrecto");
+      super("Formato de formación incorrecto");
 
     }
 

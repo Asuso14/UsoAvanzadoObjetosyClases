@@ -13,11 +13,18 @@ public class Trainer extends MutxamelFC implements DeportiveActions{
 
     public Trainer(String name, int age, Teams teams, String soccerTraining) {
 
-
         super(name, age);
+        checkFormation(soccerTraining);
         this.teams = teams;
         this.soccerTraining = soccerTraining;
 
+
+    }
+
+    public void setSoccerTraining(String soccerTraining){
+
+        checkFormation(soccerTraining);
+        this.soccerTraining = soccerTraining;
 
     }
 
@@ -73,7 +80,13 @@ public class Trainer extends MutxamelFC implements DeportiveActions{
         System.out.println("El jugador " + playerChanged.getName() + " con el dorsal " + playerChanged.getDorsal() + "sale al banquiyo y...");
         System.out.println("El jugador " + playerEntering.getName() + " con el dorsal " + playerEntering.getDorsal() + " entra al campoo!!");
 
-
     }
 
+    private void checkFormation(String formation){
+
+        if (!formation.matches(FORMAT)){
+            throw new InvalidFormationException();
+        }
+
+    }
 }

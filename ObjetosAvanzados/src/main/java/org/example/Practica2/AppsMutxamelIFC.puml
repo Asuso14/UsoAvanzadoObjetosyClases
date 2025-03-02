@@ -1,0 +1,99 @@
+@startuml
+
+package org.example.Practica2 {
+
+    interface DeportiveActions {
+        + train()
+        + playMatch(String rival)
+    }
+
+    interface IntegratesFunctions {
+        + focus()
+        + travel(String city)
+        + celebrateGol()
+    }
+
+    class MutxamelFC {
+        - String name
+        - int age
+        + MutxamelFC(String name, int age)
+    }
+
+    MutxamelFC ..|> IntegratesFunctions
+    MutxamelFC <|-- Player
+    MutxamelFC <|-- Trainer
+    MutxamelFC <|-- Partner
+    MutxamelFC <|-- Masseur
+
+    class Player {
+        - Teams category
+        - Positions positions
+        - int dorsal
+        - static ArrayList<Player> playerList
+        + Player(String name, int age, Teams category, Positions positions, int dorsal)
+        + setDorsal(int dorsal)
+        + train()
+        + playMatch(String rival)
+        + focus()
+        + travel(String city)
+        + celebrateGol()
+        + warmUp()
+        + rest()
+        + scoreGol()
+        - checkDorsal(int dorsal, Teams category)
+    }
+
+    Player ..|> DeportiveActions
+    Player "1" -- "1" Partner : has
+
+    class Trainer {
+        - final String FORMAT
+        - Teams teams
+        - String soccerTraining
+        + Trainer(String name, int age, Teams teams, String soccerTraining)
+        + setSoccerTraining(String soccerTraining)
+        + train()
+        + trainingPlan()
+        + playMatch(String rival)
+        + focus()
+        + travel(String city)
+        + celebrateGol()
+        + makeChanges(Player playerChanged, Player playerEntering)
+        - checkFormation(String formation)
+    }
+
+    Trainer ..|> DeportiveActions
+
+    class Partner {
+        - Player member
+        - String relationShip
+        + Partner(String name, int age, Player member, String relationShip)
+        + focus()
+        + travel(String city)
+        + celebrateGol()
+        + encourageTeam()
+    }
+
+    class Masseur {
+        - String degree
+        - int experienceYears
+        + Masseur(String name, int age, String degree, int experienceYears)
+        + focus()
+        + travel(String city)
+        + celebrateGol()
+        + giveMassage(Player player)
+    }
+
+    Masseur "1" -- "1" Player : massages
+
+    enum Positions {
+        PORTERO, DEFENSA, CENTROCAMPISTA, DELANTERO
+    }
+
+    enum Teams {
+        BENJAMIN, ALEVIN, INFANTIL, CADETE, JUVENIL, SENIOR
+    }
+
+}
+
+@enduml
